@@ -1,0 +1,529 @@
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+
+    padding: 32px 40px;
+
+    background: #fffdf6;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.welcome-header {
+    margin-bottom: 28px;
+}
+
+.welcome-header h1 {
+    font-size: 36px;
+    line-height: 1.1;
+
+    color: #050908;
+
+    font-weight: 600;
+}
+
+.welcome-header p {
+    margin-top: 7px;
+
+    font-size: 14px;
+
+    color: var(--text-secondary);
+
+    font-weight: 400;
+}
+
+
+/* ========================================
+   GRID DO DASHBOARD
+======================================== */
+
+.dashboard-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+/* ========================================
+   CARDS
+======================================== */
+
+.dashboard-card {
+    background: var(--surface);
+
+    border: 1px solid rgba(211, 217, 204, 0.45);
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    min-height: 150px;
+
+    box-shadow: 0 4px 14px rgba(43, 59, 54, 0.05);
+}
+
+
+/* ========================================
+   CARD — PROGRESSO
+======================================== */
+
+.level-card {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 12px;
+
+    color: var(--text-secondary);
+
+    font-weight: 600;
+}
+
+.level-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 75px;
+}
+
+.level-number {
+    font-size: 22px;
+
+    color: var(--primary);
+
+    font-weight: 700;
+}
+
+.level-xp {
+    font-size: 11px;
+
+    color: var(--text-secondary);
+
+    font-weight: 400;
+
+    margin-left: 8px;
+}
+
+
+/* ========================================
+   BARRA DE PROGRESSO
+======================================== */
+
+.progress-container {
+    width: 100%;
+
+    margin-top: 12px;
+}
+
+.progress-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 6px;
+
+    font-size: 10px;
+
+    color: var(--text-secondary);
+
+    font-weight: 400;
+}
+
+.progress-bar {
+    width: 100%;
+
+    height: 5px;
+
+    background: #dce2da;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 35%;
+
+    height: 100%;
+
+    background: var(--primary);
+
+    border-radius: 20px;
+
+    transition: width 0.4s ease;
+}
+
+
+/* ========================================
+   ATIVIDADES DIÁRIAS
+======================================== */
+
+.daily-card {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.daily-header {
+    margin-bottom: 18px;
+}
+
+.daily-header h2 {
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: var(--text);
+}
+
+.daily-list {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.daily-item {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 10px;
+
+    color: var(--text-secondary);
+
+    font-weight: 400;
+}
+
+.daily-number {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #dce2da;
+
+    color: var(--text);
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+.daily-item.completed .daily-number {
+    background: var(--primary);
+
+    color: white;
+}
+
+.daily-item.active .daily-number {
+    background: var(--accent-dark);
+
+    color: white;
+}
+
+.daily-pending {
+    margin-top: auto;
+
+    padding-top: 18px;
+
+    font-size: 11px;
+
+    color: var(--text-secondary);
+
+    font-weight: 400;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+.daily-pending svg {
+    width: 14px;
+    height: 14px;
+
+    color: var(--error);
+}
+
+
+/* ========================================
+   CARD — MASCOTE
+======================================== */
+.mascot-card {
+    display: flex;
+    align-items: stretch;
+    min-height: 160px;
+    gap: 18px;
+}
+
+.mascot-image {
+    width: 135px;
+    height: 165px;
+    flex-shrink: 0;
+    object-fit: contain;
+    align-self: center;
+}
+
+.mascot-info {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mascot-info p {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text);
+    font-weight: 400;
+
+    margin: 0;
+}
+
+
+/* ========================================
+   BOTÃO PRINCIPAL
+======================================== */
+.primary-button {
+    width: 100%;
+    height: 36px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: var(--primary);
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+
+    flex-shrink: 0;
+}
+
+.primary-button:hover {
+    background: var(--primary-dark);
+}
+
+/* ========================================
+   PRÓXIMA ATIVIDADE
+======================================== */
+
+.next-card {
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 160px;
+}
+
+.next-label {
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    color: var(--text-secondary);
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.subject-tag {
+    width: fit-content;
+
+    padding: 4px 8px;
+
+    border-radius: 5px;
+
+    background: var(--accent);
+
+    color: var(--primary-dark);
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.next-card h2 {
+    font-size: 15px;
+
+    color: var(--text);
+
+    font-weight: 600;
+
+    margin-bottom: 7px;
+}
+
+.next-description {
+    font-size: 10px;
+
+    line-height: 1.4;
+
+    color: var(--text-secondary);
+
+    font-weight: 400;
+
+    max-width: 95%;
+}
+
+.next-footer {
+    margin-top: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding-top: 12px;
+}
+
+.next-info {
+    font-size: 9px;
+
+    color: var(--text-secondary);
+
+    font-weight: 400;
+}
+
+.xp {
+    font-size: 9px;
+
+    color: var(--primary);
+
+    font-weight: 600;
+}
+
+.next-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 160px;
+}
+
+.next-footer {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+    padding-top: 12px;
+}
+
+.next-card .primary-button {
+    margin-top: 0;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .main-content {
+        padding: 28px;
+    }
+
+    .dashboard-grid {
+        gap: 16px;
+    }
+
+    .mascot-image {
+        width: 85px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .main-content {
+        padding: 25px 20px;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-header h1 {
+        font-size: 30px;
+    }
+
+    .mascot-card {
+        min-height: 150px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .main-content {
+        padding: 20px 15px;
+    }
+
+    .welcome-header h1 {
+        font-size: 26px;
+    }
+}
+/* ============================================
+   INICIO v2 - estilos adicionais
+   ============================================ */
+
+.welcome-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.welcome-header h1 { font-size: 1.5rem; font-weight: 800; color: var(--text,#2B3B36); }
+
+.admin-badge { background: var(--primary,#4E6F5A); color: #fff; padding: 3px 10px; border-radius: 20px; font-size: .75rem; font-weight: 700; }
+
+.sidebar-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border,#D3D9CC); }
+.focus-mode-btn, .logout-btn { width: 100%; background: none; border: none; cursor: pointer; font-size: .9rem; }
+.logout-btn:hover { color: #ef4444 !important; }
+
+.daily-type-badge { display: inline-block; padding: 1px 7px; border-radius: 20px; font-size: .7rem; font-weight: 700; background: var(--secondary,#DCE7DA); color: var(--primary,#4E6F5A); margin-left: auto; }
+
+.empty-state { color: var(--text-secondary); text-align: center; padding: 20px 0; font-size: .9rem; }

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Lumos Connect</title>
+    <link rel="stylesheet" href="./login.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/png" href="../../assets/images/Mascote.png">
+</head>
+
+<body>
+    <main class="login-page">
+        <section class="brand-section">
+
+            <div class="brand-content">
+
+                <div class="brand-logo">
+                    <img
+                        src="../../assets/logo/robolumosconnect.png"
+                        alt="Mascote Lumos"
+                        class="brand-mini-mascot"
+                    >
+                    <div class="brand-name">
+
+                        <h1>LUMOS</h1>
+
+                        <div class="connect-name">
+                            <span>-</span>
+                            <span>Connect</span>
+                            <span>-</span>
+                        </div>
+                        <p>Conecte-se.Aprenda.Evolua</p>
+                    </div>
+                </div>
+                <img
+                    src="../../assets/images/Mascote.png"
+                    alt="Mascote da Lumos Connect"
+                    class="main-mascot"
+                >
+            </div>
+        </section>
+        <section class="form-section">
+            <div class="login-container">
+                <header class="login-header">
+                    <h2>Bem-vindo(a)!</h2>
+                    <p>
+                        Faça login para continuar
+                    </p>
+                </header>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="email">
+                            E-mail ou usuario
+                        </label>
+                        <div class="input-wrapper">
+                            <i data-lucide="user"></i>
+                            <input
+                                type="text"
+                                id="email"
+                                name="email"
+                                placeholder="Digite seu e-mail ou usuario"
+                                autocomplete="username"
+                            >
+                        </div>
+                        <span
+                            class="error-message"
+                            id="emailError"
+                        ></span>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">
+                            Senha
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i data-lucide="lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                                aria-label="Mostrar senha"
+                            >
+                                <i data-lucide="eye"></i>
+                            </button>
+
+                        </div>
+
+                        <span
+                            class="error-message"
+                            id="passwordError"
+                        ></span>
+
+                    </div>
+
+
+                    <div class="forgot-password">
+
+                        <a href="#">
+                            Esqueceu sua senha?
+                        </a>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+
+                        Entrar</span>
+
+
+                        <i data-lucide="arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+                <div class="divider">
+
+                    <span></span>
+
+                    <p>ou</p>
+
+                    <span></span>
+
+                </div>
+                <button
+                    type="button"
+                    class="google-button"
+                    id="googleButton"
+                >
+                    <span class="google-icon">G</span>
+
+                    <span>Entrar com Google</span>
+
+                </button>
+                <p class="register-text">
+                    Ainda não tem uma conta?
+
+                    <a href="/lumos-connect/front-end/pages/cadastro/cadastro.html">
+                        Criar conta
+                    </a>
+                </p>
+            </div>
+        </section>
+    </main>
+<script src="../../js/api.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="./login.js"></script>
+</body>
+</html>

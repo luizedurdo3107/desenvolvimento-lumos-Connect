@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+<title>Criar conta | Lumos Connect</title>
+<link rel="stylesheet" href="./cadastro.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<main class="register-page">
+    <section class="brand-section">
+
+        <div class="brand-content">
+
+            <div class="brand-logo">
+
+                <img
+                    src="../../assets/logo/robolumosconnect.png"
+                    alt="Mascote Lumos"
+                    class="brand-mini-mascot">
+                     <div class="brand-name">
+
+                         <h1>LUMOS</h1>
+
+                         <div class="connect-name">
+
+                         <span>-</span>
+                         <span>Connect</span>
+                         <span>-</span>
+
+                    </div>
+                    <p>
+                        Conecte-se.Aprenda.Evolua
+                    </p>
+                </div>
+            </div>
+            <img
+                src="../../assets/images/Mascote.png" alt="Mascote da Lumos Connect"class="main-mascot">
+        </div>
+    </section>
+
+    <section class="form-section">
+
+        <div class="register-container">
+
+            <header class="register-header">
+                <h2>
+                    Crie sua conta
+                </h2>
+                <p>
+                    Preencha seus dados para começar
+                </p>
+             </header>
+             <form id="registerForm">
+                 <div class="input-group">
+                         <label for="name">
+                        Nome completo
+                         </label>
+                     <div class="input-wrapper">
+                        <i data-lucide="user"></i>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Digite seu nome completo"
+                            autocomplete="name">
+                     </div>
+                    <span
+                        class="error-message"
+                        id="nameError"
+                    ></span>
+                </div>
+         
+                <div class="input-group">
+                    <label for="email">
+                        E-mail
+                    </label>
+                    <div class="input-wrapper">
+                        <i data-lucide="mail"></i>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="email">
+                    </div>
+                    <span
+                        class="error-message"
+                        id="emailError"
+                    ></span>
+                </div>
+                <div class="input-group">
+                    <label for="schoolCode">
+                        Código de acesso da escola
+                    </label>
+                    <div class="input-wrapper">
+                        <i data-lucide="school"></i>
+                        <input
+                            type="text"
+                            id="schoolCode"
+                            name="schoolCode"
+                            placeholder="Digite o código fornecido pela escola"
+                            maxlength="20"
+                            autocomplete="off">
+
+                    </div>
+                    <div class="input-help">
+                        <i data-lucide="info"></i>
+                        <span>
+                            O código deve ser fornecido pela sua escola.
+                        </span>
+                    </div>
+                    <span
+                        class="error-message"
+                        id="schoolCodeError"
+                    ></span>
+                </div>
+                <div class="input-group">
+                    <label for="password">
+                        Senha
+                    </label>
+                    <div class="input-wrapper">
+                        <i data-lucide="lock"></i>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Digite sua senha"
+                            autocomplete="new-password">
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="togglePassword"
+                            aria-label="Mostrar senha">
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+                    <span
+                        class="error-message"
+                        id="passwordError"
+                    ></span>
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword">
+                        Confirmar senha
+                    </label>
+                    <div class="input-wrapper">
+                        <i data-lucide="lock-keyhole"></i>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Digite sua senha novamente"
+                            autocomplete="new-password" >
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="toggleConfirmPassword"
+                            aria-label="Mostrar senha"
+                        >
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+                    <span
+                        class="error-message"
+                        id="confirmPasswordError"
+                    ></span>
+                </div>
+                <div class="terms">
+                    <label class="terms-label">
+                        <input
+                            type="checkbox"
+                            id="terms"
+  >
+                        <span class="custom-checkbox"></span>
+                        <span class="terms-text">
+                            Concordo com os
+                            <a href="https://docs.google.com/document/d/1-eoafkt_Ru005PJ9gN6XHCy7Md5wLtOyAPuvEqbnl28/edit?usp=sharing">
+                                Termos de Uso
+                            </a>
+                            e a
+                            <a href="https://docs.google.com/document/d/1mhzDyLcRPuONmpHBPNOkmVsrM4RlYcvqkoDe6ULBAo4/edit?usp=sharing">
+                                Política de Privacidade
+                            </a>.
+                        </span>
+                    </label>
+                    <span
+                        class="error-message"
+                        id="termsError"
+                    ></span>
+                </div>
+                <button
+                    type="submit"
+                    class="register-button" >
+                    <span>
+                        Criar minha conta
+                    </span>
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </form>
+        
+            <p class="login-text">
+                Já possui uma conta?
+                <a href="/lumos-connect/front-end/pages/login/login.html">
+                    Entrar
+                </a>
+            </p>
+        </div>
+    </section>
+</main>
+<script src="../../js/api.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="./cadastro.js"></script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   HTML
+======================================== */
+
+html {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+/* ========================================
+   BODY
+======================================== */
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    font-family: var(--font-primary);
+
+    background: var(--background);
+
+    color: var(--text);
+}
+
+
+/* ========================================
+   ELEMENTOS DE FORMULÁRIO
+======================================== */
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+/* ========================================
+   BOTÕES
+======================================== */
+
+button {
+    cursor: pointer;
+}
+
+
+/* ========================================
+   LINKS
+======================================== */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ========================================
+   IMAGENS
+======================================== */
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ========================================
+   ESTRUTURA PRINCIPAL
+======================================== */
+
+.app,
+.app-layout,
+.dashboard {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+}
+
+
+/* ========================================
+   SIDEBAR GLOBAL
+======================================== */
+
+.sidebar {
+    width: 225px;
+    min-height: 100vh;
+
+    flex-shrink: 0;
+
+    background: var(--primary);
+
+    padding: 28px 14px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.sidebar-logo {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0 8px;
+
+    margin-bottom: 45px;
+}
+
+.sidebar-logo img {
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+.sidebar-logo span {
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   MENU
+======================================== */
+
+.sidebar-nav {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* ========================================
+   ITEM DO MENU
+======================================== */
+
+.nav-item {
+    width: 100%;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 0 14px;
+
+    border-radius: 11px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    text-decoration: none;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* ========================================
+   ÍCONES
+======================================== */
+
+.nav-item svg {
+    width: 25px;
+    height: 25px;
+
+    flex-shrink: 0;
+
+    stroke-width: 1.8;
+}
+
+
+/* ========================================
+   HOVER
+======================================== */
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+
+    color: #ffffff;
+}
+
+
+/* ========================================
+   ITEM ATIVO
+======================================== */
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.22);
+
+    color: #ffffff;
+
+    font-weight: 600;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+
+/* ========================================
+   RESPONSIVIDADE DA SIDEBAR
+======================================== */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 190px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 75px;
+
+        padding: 20px 10px;
+    }
+
+    .sidebar-logo {
+        justify-content: center;
+
+        padding: 0;
+
+        margin-bottom: 30px;
+    }
+
+    .sidebar-logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .sidebar-logo span {
+        display: none;
+    }
+
+    .nav-item {
+        justify-content: center;
+
+        padding: 0;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+}
+/* ============================================
+   LUMOS CONNECT v2 - Componentes globais
+   ============================================ */
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 20px;
+    background: var(--primary, #4E6F5A);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-medium, 9px);
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .2s, transform .1s;
+}
+.primary-button:hover { background: var(--primary-dark, #3B5645); transform: translateY(-1px); }
+.primary-button:active { transform: translateY(0); }
+.primary-button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 20px;
+    background: none;
+    color: var(--text, #2B3B36);
+    border: 2px solid var(--border, #D3D9CC);
+    border-radius: var(--radius-medium, 9px);
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .2s;
+}
+.secondary-button:hover { border-color: var(--primary, #4E6F5A); color: var(--primary, #4E6F5A); }
+
+/* Sidebar footer */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border, #D3D9CC);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.focus-mode-btn, .logout-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.logout-btn:hover { color: #ef4444 !important; }
+.logout-btn:hover svg { color: #ef4444 !important; }
+
+/* App layout */
+.app {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background, #F5F3EC);
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background, #F5F3EC);
+}
+
+.main-content {
+    flex: 1;
+    padding: 28px;
+    overflow-y: auto;
+    min-width: 0;
+}
+
+/* Subject tag */
+.subject-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--secondary, #DCE7DA);
+    color: var(--primary, #4E6F5A);
+    border-radius: 20px;
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+/* Empty state */
+.empty-state {
+    color: var(--text-secondary, #5B6B65);
+    text-align: center;
+    padding: 32px;
+    font-size: .9rem;
+}
+
+/* Focus mode */
+body.focus-mode .sidebar-nav .nav-item:not(.active) {
+    opacity: 0.4;
+    pointer-events: none;
+}
+body.focus-mode .sidebar-logo {
+    opacity: 0.7;
+}
+
+/* Accessibility: focus visible */
+.accessibility-focus-visible *:focus {
+    outline: 3px solid var(--primary, #4E6F5A) !important;
+    outline-offset: 3px !important;
+}
+
+/* Skip to main */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary, #4E6F5A);
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 9999;
+    border-radius: 0 0 8px 0;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top .2s;
+}
+.skip-link:focus { top: 0; }

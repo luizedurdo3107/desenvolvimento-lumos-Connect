@@ -1,0 +1,14 @@
+{
+  "name": "lumos-connect",
+  "version": "2.0.0",
+  "description": "Plataforma educacional Lumos Connect",
+  "scripts": {
+    "install:backend": "cd back-end && npm install",
+    "db:init": "cd back-end && npm run db:init",
+    "db:seed": "cd back-end && npm run db:seed",
+    "dev": "cd back-end && npm run dev",
+    "start": "cd back-end && npm start"
+  },
+  "keywords": ["education", "accessibility", "lumos"],
+  "license": "MIT"
+}

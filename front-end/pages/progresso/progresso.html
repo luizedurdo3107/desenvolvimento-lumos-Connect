@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progresso | Lumos Connect</title>
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/accessibility.css">
+    <link rel="stylesheet" href="./progresso.css">
+    <link rel="icon" type="image/png" href="../../assets/images/Mascote.png">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../assets/logo/robolumosconnect.png" alt="Lumos Connect">
+            <span>Lumos Connect</span>
+        </div>
+        <nav class="sidebar-nav" aria-label="Navegação principal">
+            <a href="/lumos-connect/front-end/pages/inicio/inicio.html" class="nav-item"><i data-lucide="house"></i><span>Início</span></a>
+            <a href="/lumos-connect/front-end/pages/atividades/atividades.html" class="nav-item"><i data-lucide="notebook-tabs"></i><span>Atividades</span></a>
+            <a href="/lumos-connect/front-end/pages/progresso/progresso.html" class="nav-item active" aria-current="page"><i data-lucide="chart-no-axes-combined"></i><span>Progresso</span></a>
+            <a href="/lumos-connect/front-end/pages/agenda/agenda.html" class="nav-item"><i data-lucide="calendar-days"></i><span>Agenda</span></a>
+            <a href="/lumos-connect/front-end/pages/configuracoes/configuracoes.html" class="nav-item"><i data-lucide="settings"></i><span>Configurações</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="nav-item focus-mode-btn" id="focusModeBtn" aria-label="Modo foco"><i data-lucide="eye"></i><span>Modo Foco</span></button>
+            <button class="nav-item logout-btn" id="logoutBtn" aria-label="Sair"><i data-lucide="log-out"></i><span>Sair</span></button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Meu Progresso</h1>
+            <p>Acompanhe sua evolução</p>
+        </header>
+
+        <!-- Stats summary -->
+        <section class="stats-grid" id="statsGrid" aria-label="Estatísticas gerais">
+            <div class="stat-card">
+                <i data-lucide="check-circle-2"></i>
+                <div>
+                    <span class="stat-value" id="statCompleted">—</span>
+                    <span class="stat-label">Atividades concluídas</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="target"></i>
+                <div>
+                    <span class="stat-value" id="statTotal">—</span>
+                    <span class="stat-label">Total disponível</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="trending-up"></i>
+                <div>
+                    <span class="stat-value" id="statPct">—</span>
+                    <span class="stat-label">Aproveitamento geral</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="zap"></i>
+                <div>
+                    <span class="stat-value" id="statXp">—</span>
+                    <span class="stat-label">XP acumulado</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities progress list -->
+        <section class="progress-section">
+            <h2>Atividades por status</h2>
+            <div id="progressList" class="progress-list">
+                <p class="empty-state">Carregando...</p>
+            </div>
+        </section>
+
+        <!-- Subject progress -->
+        <section class="progress-section">
+            <h2>Progresso por matéria</h2>
+            <div id="subjectProgress" class="subject-progress">
+                <p class="empty-state">Carregando...</p>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/authGuard.js"></script>
+<script src="../../js/accessibility.js"></script>
+<script src="./progresso.js"></script>
+</body>
+</html>

@@ -1,0 +1,1073 @@
+:root {
+    --primary: #4E6F5A;
+    --primary-dark: #3B5645;
+
+    --secondary: #DCE7DA;
+
+    --accent: #C7DEDB;
+    --accent-dark: #8FB3AE;
+
+    --background: #F5F3EC;
+    --surface: #FFFFFF;
+
+    --soft: #E6E8E0;
+    --border: #D3D9CC;
+
+    --text: #2B3B36;
+    --text-secondary: #5B6B65;
+
+    --error: #C75C5C;
+
+    --radius: 16px;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app {
+    display: flex;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 255px;
+
+    background: var(--primary);
+
+    padding: 24px 16px;
+
+    color: white;
+
+    flex-shrink: 0;
+}
+
+
+.logo-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-weight: 700;
+
+    font-size: 18px;
+
+    margin-bottom: 42px;
+
+    padding-left: 4px;
+}
+
+
+.logo-mascote {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.logo-mascote svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+.menu {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.menu-item {
+    text-decoration: none;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 13px 14px;
+
+    border-radius: 14px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.menu-item svg {
+    width: 28px;
+    height: 28px;
+
+    stroke-width: 1.7;
+}
+
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.10);
+
+    color: white;
+}
+
+
+.menu-item.active {
+    background: rgba(255, 255, 255, 0.20);
+
+    color: white;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main-content {
+    flex: 1;
+
+    padding: 42px 48px 70px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    width: 100%;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+
+.page-header h1 {
+    font-size: 42px;
+
+    line-height: 1.1;
+
+    color: #111;
+
+    margin-bottom: 8px;
+}
+
+
+.page-header p {
+    font-size: 15px;
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.settings-card {
+    background: var(--surface);
+
+    border: 1px solid rgba(211, 217, 204, 0.7);
+
+    border-radius: var(--radius);
+
+    padding: 24px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 3px 12px rgba(43, 59, 54, 0.04);
+}
+
+
+.card-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 24px;
+}
+
+
+.card-header > svg {
+    width: 26px;
+
+    height: 26px;
+
+    color: var(--primary);
+}
+
+
+.section-label {
+    display: block;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.3px;
+}
+
+
+.card-header h2 {
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+
+.card-header p {
+    color: var(--text-secondary);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   PERFIL
+========================= */
+
+.profile-card {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #fafcf8
+    );
+}
+
+
+.profile-icon {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 13px;
+
+    background: var(--secondary);
+
+    color: var(--primary);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.profile-icon svg {
+    width: 23px;
+}
+
+
+.profile-content {
+    display: flex;
+
+    gap: 26px;
+
+    align-items: flex-start;
+}
+
+
+.avatar {
+    width: 92px;
+    height: 92px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+
+.profile-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(200px, 1fr));
+
+    gap: 18px 22px;
+
+    flex: 1;
+}
+
+
+.profile-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.profile-field label {
+    font-size: 12px;
+
+    color: var(--text-secondary);
+
+    font-weight: 600;
+}
+
+
+.profile-field input {
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding: 11px 13px;
+
+    background: #fbfcfa;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.profile-field input:focus {
+    border-color: var(--accent-dark);
+
+    box-shadow:
+        0 0 0 3px rgba(143, 179, 174, 0.15);
+}
+
+
+.account-type {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-height: 42px;
+
+    padding: 0 12px;
+
+    border-radius: 10px;
+
+    background: var(--secondary);
+
+    color: var(--primary-dark);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.account-type svg {
+    width: 18px;
+}
+
+
+.card-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 22px;
+}
+
+
+.btn-primary {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border: 0;
+
+    background: var(--primary);
+
+    color: white;
+
+    padding: 11px 17px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+}
+
+
+.btn-primary svg {
+    width: 17px;
+}
+
+
+/* =========================
+   LEITURA
+========================= */
+
+.reading-card {
+    border: 2px solid #238FFF;
+}
+
+
+.range-option {
+    margin-bottom: 22px;
+}
+
+
+.range-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 12px;
+
+    margin-bottom: 8px;
+}
+
+
+.range-label strong {
+    color: var(--text);
+
+    font-size: 12px;
+}
+
+
+.range-option input[type="range"] {
+    width: 100%;
+
+    accent-color: var(--primary);
+
+    cursor: pointer;
+}
+
+
+.theme-area {
+    margin-top: 8px;
+}
+
+
+.setting-title {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+
+.theme-buttons {
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.theme-btn,
+.format-btn {
+    border: 1px solid var(--border);
+
+    background: #fafbf8;
+
+    color: var(--text);
+
+    padding: 8px 13px;
+
+    border-radius: 999px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.theme-btn svg,
+.format-btn svg {
+    width: 14px;
+
+    height: 14px;
+}
+
+
+.theme-btn:hover,
+.format-btn:hover {
+    border-color: var(--accent-dark);
+}
+
+
+.theme-btn.active,
+.format-btn.active {
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: white;
+}
+
+
+/* =========================
+   FOCO
+========================= */
+
+.focus-card {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.focus-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.focus-icon {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 13px;
+
+    background: var(--secondary);
+
+    color: var(--primary);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+
+.focus-icon svg {
+    width: 23px;
+}
+
+
+.focus-info h2 {
+    font-size: 16px;
+
+    margin-bottom: 4px;
+}
+
+
+.focus-info p {
+    font-size: 12px;
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================
+   SWITCH
+========================= */
+
+.switch {
+    position: relative;
+
+    width: 44px;
+    height: 25px;
+
+    flex-shrink: 0;
+}
+
+
+.switch input {
+    opacity: 0;
+
+    width: 0;
+    height: 0;
+}
+
+
+.slider {
+    position: absolute;
+
+    inset: 0;
+
+    background: #d7ded5;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 19px;
+    height: 19px;
+
+    left: 3px;
+    top: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    transition: 0.2s ease;
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+
+.switch input:checked + .slider {
+    background: var(--primary);
+}
+
+
+.switch input:checked + .slider::before {
+    transform: translateX(19px);
+}
+
+
+/* =========================
+   FORMATOS
+========================= */
+
+.content-format-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+}
+
+
+.example-content {
+    padding: 17px;
+
+    border-radius: 11px;
+
+    background: var(--soft);
+}
+
+
+.example-content h3 {
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+
+.example-content p {
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================
+   CONTA
+========================= */
+
+.account-actions {
+    display: flex;
+
+    gap: 12px;
+}
+
+
+.account-btn {
+    border: 1px solid var(--border);
+
+    background: white;
+
+    color: var(--text);
+
+    border-radius: 10px;
+
+    padding: 11px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.account-btn svg {
+    width: 17px;
+}
+
+
+.account-btn:hover {
+    background: #f7f9f5;
+}
+
+
+.account-btn.danger {
+    color: var(--error);
+
+    border-color: rgba(199, 92, 92, 0.3);
+}
+
+
+.account-btn.danger:hover {
+    background: rgba(199, 92, 92, 0.08);
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark {
+    --background: #1c221f;
+    --surface: #252d29;
+    --text: #edf3ef;
+    --text-secondary: #b8c5be;
+    --border: #3a4640;
+    --soft: #323b36;
+}
+
+
+body.dark .page-header h1 {
+    color: white;
+}
+
+
+body.dark .profile-field input {
+    background: #202722;
+
+    color: white;
+}
+
+
+body.dark .theme-btn,
+body.dark .format-btn,
+body.dark .account-btn {
+    background: #29312d;
+
+    color: white;
+}
+
+
+body.dark .account-btn:hover {
+    background: #323b36;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main-content {
+        padding: 30px;
+    }
+
+    .profile-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+
+        padding: 12px;
+    }
+
+    .logo-area {
+        margin-bottom: 15px;
+    }
+
+    .menu {
+        flex-direction: row;
+
+        overflow-x: auto;
+    }
+
+    .menu-item {
+        white-space: nowrap;
+    }
+
+    .main-content {
+        padding: 22px 16px 40px;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .profile-content {
+        flex-direction: column;
+    }
+
+    .account-actions {
+        flex-direction: column;
+    }
+}
+
+/* =========================
+   PERSONALIZAÇÃO DO USUÁRIO
+========================= */
+
+body {
+    font-size: var(--user-font-size, 16px);
+    line-height: var(--user-line-height, normal);
+    letter-spacing: var(--user-letter-spacing, normal);
+}
+
+
+/* =========================
+   TEMA SÉPIA
+========================= */
+
+body.sepia {
+    --background: #f4ead7;
+    --surface: #fffaf0;
+    --text: #4a4032;
+    --text-secondary: #756a59;
+    --border: #d8cbb4;
+    --soft: #eee2cc;
+}
+
+
+/* =========================
+   MODO FOCO
+========================= */
+
+body.focus-mode .section-label,
+body.focus-mode .card-header p,
+body.focus-mode .focus-info p,
+body.focus-mode .example-content {
+    opacity: 0.35;
+}
+
+body.focus-mode .settings-card {
+    box-shadow: none;
+}
+
+/* =========================
+   PERSONALIZAÇÃO DO USUÁRIO
+========================= */
+
+body {
+    font-size: var(--user-font-size, 16px);
+    line-height: var(--user-line-height, 1.6);
+    letter-spacing: var(--user-letter-spacing, 0);
+}
+
+
+/* =========================
+   TEMA SÉPIA
+========================= */
+
+body.sepia {
+    --background: #f4ead7;
+    --surface: #fff8e9;
+    --soft: #eadfc9;
+    --border: #d8c9ad;
+    --text: #4b4031;
+    --text-secondary: #766854;
+}
+
+
+body.sepia .page-header h1 {
+    color: #3f3528;
+}
+
+
+body.sepia .profile-card {
+    background: linear-gradient(
+        135deg,
+        #fff8e9,
+        #f7edda
+    );
+}
+
+
+body.sepia .profile-field input {
+    background: #fffaf0;
+    color: #4b4031;
+}
+
+
+body.sepia .theme-btn,
+body.sepia .format-btn,
+body.sepia .account-btn {
+    background: #fff8e9;
+}
+
+
+/* =========================
+   MODO FOCO
+========================= */
+
+body.focus-mode .page-header p,
+body.focus-mode .section-label,
+body.focus-mode .card-header p,
+body.focus-mode .focus-info p,
+body.focus-mode .example-content p {
+    display: none;
+}
+
+
+body.focus-mode .settings-card {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+
+body.focus-mode .sidebar {
+    opacity: 0.65;
+}
+
+
+body.focus-mode .main-content {
+    max-width: 1000px;
+}
+/* ============================================
+   CONFIGURACOES v2 - estilos adicionais
+   ============================================ */
+
+.main-content { padding: 28px; flex: 1; overflow-y: auto; }
+.page-header { margin-bottom: 24px; }
+.page-header h1 { font-size: 1.5rem; font-weight: 800; color: var(--text,#2B3B36); }
+.page-header p { color: var(--text-secondary); font-size: .9rem; margin-top: 4px; }
+
+.sidebar-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border,#D3D9CC); }
+.focus-mode-btn, .logout-btn { width: 100%; background: none; border: none; cursor: pointer; font-size: .9rem; }
+.logout-btn:hover { color: #ef4444 !important; }
+.secondary-button { padding: 8px 18px; border-radius: 9px; border: 2px solid var(--border,#D3D9CC); background: none; cursor: pointer; font-size: .9rem; font-weight: 600; color: var(--text,#2B3B36); transition: all .2s; }
+.secondary-button:hover { border-color: var(--primary,#4E6F5A); color: var(--primary,#4E6F5A); }

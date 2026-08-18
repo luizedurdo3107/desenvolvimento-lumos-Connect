@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações | Lumos Connect</title>
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/accessibility.css">
+    <link rel="stylesheet" href="./configuracoes.css">
+    <link rel="icon" type="image/png" href="../../assets/images/Mascote.png">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .settings-card{background:var(--bg-primary,#fff);border-radius:14px;padding:24px;margin-bottom:20px;border:1px solid var(--border-color,#e0e0e0)}
+        .settings-card h2{font-size:1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+        .setting-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border-color,#f0f0f0)}
+        .setting-row:last-child{border-bottom:none}
+        .setting-label{font-weight:600;font-size:.9rem}
+        .setting-desc{font-size:.8rem;color:var(--text-secondary,#888);margin-top:2px}
+        /* Toggle switch */
+        .toggle-switch{position:relative;width:48px;height:26px;flex-shrink:0}
+        .toggle-switch input{opacity:0;width:0;height:0}
+        .toggle-slider{position:absolute;inset:0;background:#ccc;border-radius:26px;cursor:pointer;transition:.3s}
+        .toggle-slider:before{content:"";position:absolute;height:20px;width:20px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
+        .toggle-switch input:checked + .toggle-slider{background:var(--primary,#4E6F5A)}
+        .toggle-switch input:checked + .toggle-slider:before{transform:translateX(22px)}
+        .toggle-switch input:focus + .toggle-slider{outline:2px solid var(--primary,#4E6F5A);outline-offset:2px}
+        /* Font size select */
+        .size-select{padding:6px 12px;border:2px solid var(--border-color,#ddd);border-radius:8px;font-size:.9rem;background:var(--bg-primary,#fff);color:var(--text-primary,#1a1a1a);cursor:pointer}
+        .size-select:focus{border-color:var(--primary,#4E6F5A);outline:none}
+        /* Form fields */
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+        .form-group{display:flex;flex-direction:column;gap:4px}
+        .form-group label{font-size:.85rem;font-weight:600}
+        .form-group input{padding:8px 12px;border:2px solid var(--border-color,#ddd);border-radius:8px;font-size:.9rem;background:var(--bg-primary,#fff);color:var(--text-primary,#1a1a1a)}
+        .form-group input:focus{border-color:var(--primary,#4E6F5A);outline:none}
+        .save-btn{margin-top:12px}
+        .alert-success{background:#f0fdf4;color:#166534;padding:10px 14px;border-radius:8px;margin-top:8px;font-size:.85rem;display:none}
+    </style>
+</head>
+<body>
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../assets/logo/robolumosconnect.png" alt="Lumos Connect">
+            <span>Lumos Connect</span>
+        </div>
+        <nav class="sidebar-nav" aria-label="Navegação principal">
+            <a href="/lumos-connect/front-end/pages/inicio/inicio.html" class="nav-item"><i data-lucide="house"></i><span>Início</span></a>
+            <a href="/lumos-connect/front-end/pages/atividades/atividades.html" class="nav-item"><i data-lucide="notebook-tabs"></i><span>Atividades</span></a>
+            <a href="/lumos-connect/front-end/pages/progresso/progresso.html" class="nav-item"><i data-lucide="chart-no-axes-combined"></i><span>Progresso</span></a>
+            <a href="/lumos-connect/front-end/pages/agenda/agenda.html" class="nav-item"><i data-lucide="calendar-days"></i><span>Agenda</span></a>
+            <a href="/lumos-connect/front-end/pages/configuracoes/configuracoes.html" class="nav-item active" aria-current="page"><i data-lucide="settings"></i><span>Configurações</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="nav-item focus-mode-btn" id="focusModeBtn" aria-label="Modo foco"><i data-lucide="eye"></i><span>Modo Foco</span></button>
+            <button class="nav-item logout-btn" id="logoutBtn" aria-label="Sair"><i data-lucide="log-out"></i><span>Sair</span></button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Configurações</h1>
+            <p>Personalize sua experiência no Lumos Connect.</p>
+        </header>
+
+        <!-- PERFIL -->
+        <section class="settings-card" aria-labelledby="profileTitle">
+            <h2 id="profileTitle"><i data-lucide="user"></i> Perfil</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="profileName">Nome</label>
+                    <input type="text" id="profileName" placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="profileEmail">E-mail</label>
+                    <input type="email" id="profileEmail" placeholder="Seu e-mail">
+                </div>
+            </div>
+            <button class="primary-button save-btn" id="btnSaveProfile">Salvar perfil</button>
+            <div class="alert-success" id="profileAlert">Perfil atualizado com sucesso!</div>
+        </section>
+
+        <!-- SENHA -->
+        <section class="settings-card" aria-labelledby="passTitle">
+            <h2 id="passTitle"><i data-lucide="lock"></i> Alterar senha</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="currentPass">Senha atual</label>
+                    <input type="password" id="currentPass" placeholder="Senha atual">
+                </div>
+                <div class="form-group">
+                    <label for="newPass">Nova senha</label>
+                    <input type="password" id="newPass" placeholder="Nova senha (mín. 6 caracteres)">
+                </div>
+            </div>
+            <button class="primary-button save-btn" id="btnSavePass">Alterar senha</button>
+            <div class="alert-success" id="passAlert">Senha alterada com sucesso!</div>
+        </section>
+
+        <!-- ACESSIBILIDADE -->
+        <section class="settings-card" aria-labelledby="a11yTitle">
+            <h2 id="a11yTitle"><i data-lucide="accessibility"></i> Acessibilidade</h2>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Tamanho da fonte</div>
+                    <div class="setting-desc">Ajusta o tamanho do texto em toda a plataforma</div>
+                </div>
+                <select class="size-select" id="fontSizeSelect" aria-label="Tamanho da fonte">
+                    <option value="normal">Normal</option>
+                    <option value="large">Grande</option>
+                    <option value="extra-large">Muito grande</option>
+                </select>
+            </div>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Alto contraste</div>
+                    <div class="setting-desc">Aumenta o contraste para melhor visibilidade</div>
+                </div>
+                <label class="toggle-switch" aria-label="Alto contraste">
+                    <input type="checkbox" id="toggleContrast">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Reduzir animações</div>
+                    <div class="setting-desc">Remove ou reduz animações e transições</div>
+                </div>
+                <label class="toggle-switch" aria-label="Reduzir animações">
+                    <input type="checkbox" id="toggleMotion">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Indicadores de foco visíveis</div>
+                    <div class="setting-desc">Destaca o elemento focado ao navegar pelo teclado</div>
+                </div>
+                <label class="toggle-switch" aria-label="Indicadores de foco">
+                    <input type="checkbox" id="toggleFocus">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Maior espaçamento de texto</div>
+                    <div class="setting-desc">Aumenta o espaçamento entre linhas e letras</div>
+                </div>
+                <label class="toggle-switch" aria-label="Espaçamento de texto">
+                    <input type="checkbox" id="toggleSpacing">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Fonte para dislexia</div>
+                    <div class="setting-desc">Ativa fonte mais legível para pessoas com dislexia</div>
+                </div>
+                <label class="toggle-switch" aria-label="Fonte para dislexia">
+                    <input type="checkbox" id="toggleDyslexic">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </section>
+
+        <!-- MODO FOCO -->
+        <section class="settings-card" aria-labelledby="focusTitle">
+            <h2 id="focusTitle"><i data-lucide="eye"></i> Modo Foco</h2>
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Modo Foco</div>
+                    <div class="setting-desc">Reduz elementos visuais para melhorar a concentração</div>
+                </div>
+                <label class="toggle-switch" aria-label="Modo Foco">
+                    <input type="checkbox" id="toggleFocusMode">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </section>
+
+        <!-- ADMIN LINK -->
+        <section class="settings-card admin-section" id="adminSection" style="display:none" aria-labelledby="adminTitle">
+            <h2 id="adminTitle"><i data-lucide="shield"></i> Administração</h2>
+            <p style="font-size:.9rem;color:var(--text-secondary,#888);margin-bottom:12px">Acesse o painel administrativo para gerenciar atividades e usuários.</p>
+            <a href="/lumos-connect/front-end/pages/admin/admin.html" class="primary-button" style="display:inline-block">Abrir painel admin</a>
+        </section>
+
+    </main>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/authGuard.js"></script>
+<script src="../../js/accessibility.js"></script>
+<script src="./configuracoes.js"></script>
+</body>
+</html>

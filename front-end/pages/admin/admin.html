@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin | Lumos Connect</title>
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/accessibility.css">
+    <link rel="icon" type="image/png" href="../../assets/images/Mascote.png">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Admin-specific styles */
+        .admin-layout{display:flex;min-height:100vh;background:var(--bg-secondary,#f5f7f5)}
+        .admin-sidebar{width:220px;background:var(--bg-primary,#fff);border-right:1px solid var(--border-color,#e0e0e0);display:flex;flex-direction:column;padding:20px 0;flex-shrink:0}
+        .admin-sidebar .sidebar-logo{padding:0 16px 20px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border-color,#e0e0e0);margin-bottom:16px}
+        .admin-sidebar .sidebar-logo img{width:32px}
+        .admin-sidebar .sidebar-logo span{font-weight:700;font-size:.95rem;color:var(--text-primary,#1a1a1a)}
+        .admin-nav-item{display:flex;align-items:center;gap:10px;padding:10px 16px;font-size:.9rem;color:var(--text-secondary,#666);cursor:pointer;border-radius:8px;margin:2px 8px;border:none;background:none;width:calc(100% - 16px);text-align:left;text-decoration:none;transition:all .15s}
+        .admin-nav-item:hover{background:var(--bg-secondary,#f5f5f5);color:var(--text-primary,#1a1a1a)}
+        .admin-nav-item.active{background:var(--primary-light,#eaf2ec);color:var(--primary,#4E6F5A);font-weight:600}
+        .admin-main{flex:1;padding:28px;overflow-y:auto}
+        .admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+        .admin-header h1{font-size:1.4rem;font-weight:700}
+        .admin-badge{background:var(--primary,#4E6F5A);color:#fff;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:600}
+
+        /* Table */
+        .admin-table-wrap{background:var(--bg-primary,#fff);border-radius:14px;border:1px solid var(--border-color,#e0e0e0);overflow:hidden}
+        .admin-table{width:100%;border-collapse:collapse}
+        .admin-table th{padding:12px 16px;text-align:left;font-size:.8rem;font-weight:700;color:var(--text-secondary,#888);border-bottom:1px solid var(--border-color,#e0e0e0);background:var(--bg-secondary,#f9fafb)}
+        .admin-table td{padding:12px 16px;font-size:.875rem;border-bottom:1px solid var(--border-color,#f0f0f0);color:var(--text-primary,#1a1a1a)}
+        .admin-table tr:last-child td{border-bottom:none}
+        .admin-table tr:hover td{background:var(--bg-secondary,#f9fafb)}
+        .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:.75rem;font-weight:600}
+        .badge-quiz{background:#dbeafe;color:#1d4ed8}
+        .badge-flashcard{background:#f3e8ff;color:#7c3aed}
+        .badge-true_false{background:#dcfce7;color:#166534}
+        .badge-multiple_choice{background:#fef3c7;color:#b45309}
+        .badge-matching{background:#fce7f3;color:#be185d}
+        .badge-standard{background:#e0f2fe;color:#0369a1}
+        .badge-game{background:#ffedd5;color:#c2410c}
+        .badge-published{background:#dcfce7;color:#166534}
+        .badge-draft{background:#f3f4f6;color:#6b7280}
+
+        /* Action buttons */
+        .action-btns{display:flex;gap:6px;flex-wrap:nowrap}
+        .btn-action{padding:5px 10px;border-radius:7px;border:1px solid var(--border-color,#ddd);background:none;cursor:pointer;font-size:.8rem;display:flex;align-items:center;gap:4px;color:var(--text-secondary,#666);transition:all .15s;white-space:nowrap}
+        .btn-action:hover{background:var(--bg-secondary,#f5f5f5);color:var(--text-primary,#1a1a1a)}
+        .btn-action.danger:hover{background:#fee2e2;color:#dc2626;border-color:#dc2626}
+        .btn-action.primary:hover{background:var(--primary-light,#eaf2ec);color:var(--primary,#4E6F5A);border-color:var(--primary,#4E6F5A)}
+
+        /* Modal */
+        .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:flex;align-items:flex-start;justify-content:center;padding:24px;overflow-y:auto}
+        .modal-box{background:var(--bg-primary,#fff);border-radius:16px;max-width:720px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25);margin:auto}
+        .modal-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border-color,#e0e0e0)}
+        .modal-header h2{font-size:1.1rem;font-weight:700;margin:0}
+        .modal-body{padding:24px;max-height:70vh;overflow-y:auto}
+        .modal-footer{padding:16px 24px;border-top:1px solid var(--border-color,#e0e0e0);display:flex;gap:10px;justify-content:flex-end}
+        .btn-close-modal{background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;display:flex;align-items:center;color:var(--text-secondary,#666)}
+        .btn-close-modal:hover{background:var(--bg-secondary,#f5f5f5)}
+
+        /* Form */
+        .form-group{margin-bottom:16px}
+        .form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--text-primary,#1a1a1a)}
+        .form-group input,.form-group textarea,.form-group select{width:100%;padding:9px 13px;border:2px solid var(--border-color,#ddd);border-radius:9px;font-size:.9rem;background:var(--bg-primary,#fff);color:var(--text-primary,#1a1a1a);transition:border .2s}
+        .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--primary,#4E6F5A);outline:none}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+
+        /* Questions builder */
+        .questions-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border-color,#e0e0e0)}
+        .question-item{background:var(--bg-secondary,#f9fafb);border-radius:10px;padding:16px;margin-bottom:12px;border:1px solid var(--border-color,#e0e0e0)}
+        .question-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+        .question-header span{font-weight:600;font-size:.85rem}
+        .option-item{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+        .option-item input[type=text]{flex:1}
+        .option-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--primary,#4E6F5A);cursor:pointer}
+        .option-item .option-label{font-size:.8rem;color:var(--text-secondary,#888);white-space:nowrap}
+        .btn-add-option{background:none;border:1px dashed var(--border-color,#ccc);border-radius:7px;padding:5px 12px;font-size:.8rem;cursor:pointer;color:var(--text-secondary,#888);width:100%;margin-top:4px}
+        .btn-add-option:hover{border-color:var(--primary,#4E6F5A);color:var(--primary,#4E6F5A)}
+        .btn-add-question{background:none;border:2px dashed var(--primary,#4E6F5A);border-radius:10px;padding:10px;font-size:.9rem;cursor:pointer;color:var(--primary,#4E6F5A);width:100%;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px}
+        .btn-add-question:hover{background:var(--primary-light,#eaf2ec)}
+        .btn-remove{background:none;border:none;cursor:pointer;color:#ef4444;padding:4px;border-radius:4px;display:flex;align-items:center}
+        .btn-remove:hover{background:#fee2e2}
+
+        /* Stats cards */
+        .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+        .stat-card{background:var(--bg-primary,#fff);border-radius:12px;padding:18px;border:1px solid var(--border-color,#e0e0e0);display:flex;align-items:center;gap:12px}
+        .stat-icon{width:40px;height:40px;border-radius:10px;background:var(--primary-light,#eaf2ec);display:flex;align-items:center;justify-content:center;color:var(--primary,#4E6F5A)}
+        .stat-value{font-size:1.6rem;font-weight:800;color:var(--text-primary,#1a1a1a)}
+        .stat-label{font-size:.8rem;color:var(--text-secondary,#888)}
+
+        /* Search */
+        .search-bar{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+        .search-bar input{flex:1;padding:9px 14px;border:2px solid var(--border-color,#ddd);border-radius:10px;font-size:.9rem;background:var(--bg-primary,#fff);color:var(--text-primary,#1a1a1a)}
+        .search-bar input:focus{border-color:var(--primary,#4E6F5A);outline:none}
+        .tab-bar{display:flex;gap:4px;margin-bottom:20px;background:var(--bg-secondary,#f5f5f5);border-radius:10px;padding:4px}
+        .tab-btn{flex:1;padding:8px;border-radius:7px;border:none;background:none;cursor:pointer;font-size:.85rem;color:var(--text-secondary,#666);transition:all .15s}
+        .tab-btn.active{background:var(--bg-primary,#fff);color:var(--primary,#4E6F5A);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+        @media(max-width:768px){.admin-layout{flex-direction:column}.admin-sidebar{width:100%;flex-direction:row;flex-wrap:wrap;padding:10px}.stats-row{grid-template-columns:1fr 1fr}}
+    </style>
+</head>
+<body>
+<div class="admin-layout">
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-logo">
+            <img src="../../assets/logo/robolumosconnect.png" alt="Lumos Connect">
+            <span>Lumos Admin</span>
+        </div>
+        <nav>
+            <button class="admin-nav-item active" data-tab="activities" id="tabActivities">
+                <i data-lucide="notebook-tabs"></i> Atividades
+            </button>
+            <button class="admin-nav-item" data-tab="users" id="tabUsers">
+                <i data-lucide="users"></i> Usuários
+            </button>
+            <a href="/lumos-connect/front-end/pages/inicio/inicio.html" class="admin-nav-item">
+                <i data-lucide="arrow-left"></i> Voltar ao início
+            </a>
+            <button class="admin-nav-item" id="logoutBtn" style="margin-top:auto">
+                <i data-lucide="log-out"></i> Sair
+            </button>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-header">
+            <div>
+                <h1 id="pageTitle">Gerenciar Atividades</h1>
+                <span class="admin-badge">Painel Admin</span>
+            </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats-row" id="statsRow">
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="notebook-tabs"></i></div>
+                <div><div class="stat-value" id="statActivities">—</div><div class="stat-label">Atividades</div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="eye"></i></div>
+                <div><div class="stat-value" id="statPublished">—</div><div class="stat-label">Publicadas</div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="users"></i></div>
+                <div><div class="stat-value" id="statUsers">—</div><div class="stat-label">Usuários</div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="check-circle-2"></i></div>
+                <div><div class="stat-value" id="statCompletions">—</div><div class="stat-label">Conclusões</div></div>
+            </div>
+        </div>
+
+        <!-- ACTIVITIES TAB -->
+        <div id="panelActivities">
+            <div class="search-bar">
+                <input type="text" id="searchActivities" placeholder="Buscar atividades..." aria-label="Buscar atividades">
+                <button class="primary-button" id="btnNewActivity">
+                    <i data-lucide="plus"></i> Nova atividade
+                </button>
+            </div>
+
+            <div class="tab-bar" role="tablist">
+                <button class="tab-btn active" data-type="all" role="tab">Todas</button>
+                <button class="tab-btn" data-type="QUIZ" role="tab">Quiz</button>
+                <button class="tab-btn" data-type="FLASHCARD" role="tab">Flashcard</button>
+                <button class="tab-btn" data-type="TRUE_FALSE" role="tab">V/F</button>
+                <button class="tab-btn" data-type="MULTIPLE_CHOICE" role="tab">Múlt. Escolha</button>
+                <button class="tab-btn" data-type="MATCHING" role="tab">Associação</button>
+                <button class="tab-btn" data-type="STANDARD" role="tab">Texto</button>
+            </div>
+
+            <div class="admin-table-wrap">
+                <table class="admin-table" aria-label="Lista de atividades">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Tipo</th>
+                            <th>Matéria</th>
+                            <th>Questões</th>
+                            <th>Conclusões</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activitiesTableBody">
+                        <tr><td colspan="7" style="text-align:center;color:var(--text-secondary)">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- USERS TAB -->
+        <div id="panelUsers" style="display:none">
+            <div class="admin-table-wrap">
+                <table class="admin-table" aria-label="Lista de usuários">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Role</th>
+                            <th>Cadastrado em</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <tr><td colspan="5" style="text-align:center;color:var(--text-secondary)">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- ACTIVITY FORM MODAL -->
+<div id="activityModal" class="modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="actModalTitle">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h2 id="actModalTitle">Nova atividade</h2>
+            <button class="btn-close-modal" id="closeActModal" aria-label="Fechar"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="actTitle">Título *</label>
+                    <input type="text" id="actTitle" placeholder="Título da atividade" required>
+                </div>
+                <div class="form-group">
+                    <label for="actSubject">Matéria</label>
+                    <select id="actSubject">
+                        <option value="">Selecione...</option>
+                        <option>Matemática</option>
+                        <option>Português</option>
+                        <option>Ciências</option>
+                        <option>História</option>
+                        <option>Geografia</option>
+                        <option>Inglês</option>
+                        <option>Artes</option>
+                        <option>Educação Física</option>
+                        <option>Outro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="actType">Tipo *</label>
+                    <select id="actType">
+                        <option value="STANDARD">Texto / Leitura</option>
+                        <option value="QUIZ">Quiz</option>
+                        <option value="FLASHCARD">Flashcard</option>
+                        <option value="TRUE_FALSE">Verdadeiro ou Falso</option>
+                        <option value="MULTIPLE_CHOICE">Múltipla Escolha</option>
+                        <option value="MATCHING">Associação de conceitos</option>
+                        <option value="GAME">Jogo educativo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="actDue">Data de entrega</label>
+                    <input type="datetime-local" id="actDue">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="actDesc">Descrição</label>
+                <textarea id="actDesc" rows="3" placeholder="Descreva a atividade..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="actPublished" checked style="margin-right:6px">
+                    Publicar imediatamente
+                </label>
+            </div>
+
+            <!-- Questions builder (shown dynamically) -->
+            <div class="questions-section" id="questionsSection">
+                <h3 style="font-size:.95rem;margin-bottom:12px">Questões</h3>
+                <div id="questionsList"></div>
+                <button class="btn-add-question" id="btnAddQuestion" type="button">
+                    <i data-lucide="plus"></i> Adicionar questão
+                </button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="secondary-button" id="btnCancelActivity">Cancelar</button>
+            <button class="primary-button" id="btnSaveActivity">Salvar atividade</button>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/accessibility.js"></script>
+<script src="./admin.js"></script>
+</body>
+</html>

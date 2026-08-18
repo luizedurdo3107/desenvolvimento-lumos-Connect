@@ -1,0 +1,99 @@
+/*
+   TEXTO MAIOR
+ */
+
+.accessibility-large-text {
+    font-size: 115%;
+}
+
+
+/* 
+   TEXTO EXTRA GRANDE
+*/
+
+.accessibility-extra-large-text {
+    font-size: 130%;
+}
+
+
+/* 
+   ESPAÇAMENTO DE TEXTO
+*/
+
+.accessibility-text-spacing {
+
+    letter-spacing: 0.04em;
+
+    word-spacing: 0.1em;
+
+    line-height: 1.6;
+}
+
+
+/* 
+   REDUZIR ANIMAÇÕES
+*/
+
+.accessibility-reduced-motion *,
+.accessibility-reduced-motion *::before,
+.accessibility-reduced-motion *::after {
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+}
+
+
+/* 
+   ALTO CONTRASTE
+ */
+
+.accessibility-high-contrast {
+
+    filter: contrast(1.15);
+}
+
+
+/* 
+   FOCO VISÍVEL
+ */
+
+body.accessibility-focus-visible
+    button:focus-visible,
+body.accessibility-focus-visible
+    a:focus-visible,
+body.accessibility-focus-visible
+    input:focus-visible,
+body.accessibility-focus-visible
+    textarea:focus-visible,
+body.accessibility-focus-visible
+    select:focus-visible {
+
+    outline: 3px solid var(--accent-dark);
+
+    outline-offset: 3px;
+}
+/* 
+   FONTE PARA DISLEXIA
+*/
+
+.accessibility-dyslexic-font {
+    font-family: "Comic Sans MS", "Comic Sans", cursive !important;
+    letter-spacing: 0.05em;
+}
+
+/* 
+   MODO FOCO - reduz distrações
+*/
+
+body.focus-mode .sidebar-nav .nav-item:not(.active) {
+    opacity: 0.45;
+}
+
+body.focus-mode .sidebar-logo {
+    opacity: 0.7;
+}

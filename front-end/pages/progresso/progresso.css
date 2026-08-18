@@ -1,0 +1,652 @@
+/* ========================================
+   PÁGINA DE PROGRESSO
+======================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+
+    padding: 32px 40px;
+
+    background: #fffdf6;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+.page-header h1 {
+    margin: 0;
+
+    font-size: 36px;
+    line-height: 1.1;
+
+    color: #050908;
+
+    font-weight: 600;
+}
+
+
+/* ========================================
+   ABAS
+======================================== */
+
+.progress-tabs {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 24px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.progress-tab {
+    position: relative;
+
+    height: 42px;
+
+    padding: 0 16px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.progress-tab:hover {
+    color: var(--text);
+}
+
+.progress-tab.active {
+    color: var(--primary);
+
+    font-weight: 600;
+}
+
+.progress-tab.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -1px;
+
+    height: 2px;
+
+    background: var(--primary);
+
+    border-radius: 2px 2px 0 0;
+}
+
+
+/* ========================================
+   CONTEÚDO DAS ABAS
+======================================== */
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+/* ========================================
+   GRID DA VISÃO GERAL
+======================================== */
+
+.overview-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+/* ========================================
+   CARD GERAL
+======================================== */
+
+.progress-card {
+    width: 100%;
+
+    background: var(--surface);
+
+    border: 1px solid rgba(211, 217, 204, 0.45);
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 4px 14px rgba(43, 59, 54, 0.05);
+}
+
+.progress-card h2 {
+    margin: 0;
+
+    font-size: 15px;
+
+    color: var(--text);
+
+    font-weight: 600;
+}
+
+
+/* ========================================
+   RESUMO GERAL
+======================================== */
+
+.summary-card {
+    min-height: 220px;
+}
+
+.summary-card h2 {
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   GRID DOS INDICADORES
+======================================== */
+
+.summary-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* ========================================
+   INDICADOR
+======================================== */
+
+.stat-box {
+    min-height: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    border: 1px solid rgba(211, 217, 204, 0.5);
+}
+
+.stat-box strong {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 6px;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    color: var(--text);
+
+    font-weight: 700;
+}
+
+.stat-box strong svg {
+    width: 20px;
+    height: 20px;
+
+    stroke-width: 2;
+}
+
+.stat-box > span {
+    font-size: 11px;
+
+    color: var(--text-secondary);
+
+    font-weight: 400;
+}
+
+
+/* ========================================
+   CORES DOS INDICADORES
+======================================== */
+
+.stat-box.green {
+    background: #edf4ed;
+}
+
+.stat-box.green strong {
+    color: var(--primary);
+}
+
+
+.stat-box.yellow {
+    background: #f7f2df;
+}
+
+.stat-box.yellow strong {
+    color: #a58a38;
+}
+
+
+.stat-box.blue {
+    background: #eaf1f1;
+}
+
+.stat-box.blue strong {
+    color: var(--accent-dark);
+}
+
+
+.stat-box.red {
+    background: #f7eaea;
+}
+
+.stat-box.red strong {
+    color: var(--error);
+}
+
+
+/* ========================================
+   GRÁFICO
+======================================== */
+
+.chart-card {
+    min-height: 220px;
+}
+
+.chart-card h2 {
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   ÁREA DO GRÁFICO
+======================================== */
+
+.weekly-chart {
+    width: 100%;
+    height: 145px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+
+    gap: 12px;
+
+    padding: 10px 4px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+/*
+   Barras criadas pelo JavaScript
+*/
+
+.weekly-chart .chart-bar {
+    width: 28px;
+
+    min-height: 8px;
+
+    background: var(--primary);
+
+    border-radius: 6px 6px 0 0;
+
+    transition:
+        height 0.3s ease,
+        opacity 0.2s ease;
+}
+
+.weekly-chart .chart-bar:hover {
+    opacity: 0.8;
+}
+
+
+/* ========================================
+   CARD POR MATÉRIA
+======================================== */
+
+.subjects-card {
+    min-height: 300px;
+}
+
+.subjects-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+.subjects-header h2 {
+    margin-bottom: 6px;
+}
+
+.subjects-header p {
+    margin: 0;
+
+    font-size: 12px;
+
+    color: var(--text-secondary);
+
+    line-height: 1.4;
+}
+
+
+/* ========================================
+   LISTA DE MATÉRIAS
+======================================== */
+
+.subjects-list {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* ========================================
+   ITEM DE MATÉRIA
+======================================== */
+
+.subject-item {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 16px;
+
+    background: #fafbf8;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.subject-item:hover {
+    background: #f5f7f2;
+}
+
+
+/* ========================================
+   ÍCONE DA MATÉRIA
+======================================== */
+
+.subject-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: var(--secondary);
+
+    color: var(--primary);
+}
+
+.subject-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* ========================================
+   INFORMAÇÕES DA MATÉRIA
+======================================== */
+
+.subject-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.subject-info h3 {
+    margin: 0 0 5px;
+
+    font-size: 13px;
+
+    color: var(--text);
+
+    font-weight: 600;
+}
+
+.subject-info p {
+    margin: 0;
+
+    font-size: 10px;
+
+    color: var(--text-secondary);
+}
+
+
+/* ========================================
+   PROGRESSO DA MATÉRIA
+======================================== */
+
+.subject-progress {
+    width: 150px;
+
+    flex-shrink: 0;
+}
+
+.subject-progress-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 6px;
+}
+
+.subject-progress-info span {
+    font-size: 10px;
+
+    color: var(--text-secondary);
+}
+
+.subject-progress-info strong {
+    font-size: 10px;
+
+    color: var(--primary);
+
+    font-weight: 600;
+}
+
+.subject-progress-bar {
+    width: 100%;
+    height: 5px;
+
+    overflow: hidden;
+
+    background: #e1e5df;
+
+    border-radius: 20px;
+}
+
+.subject-progress-fill {
+    height: 100%;
+
+    background: var(--primary);
+
+    border-radius: 20px;
+
+    transition: width 0.4s ease;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .main-content {
+        padding: 28px;
+    }
+
+    .overview-grid {
+        gap: 16px;
+    }
+
+    .stat-box {
+        padding: 14px;
+    }
+
+    .stat-box strong {
+        font-size: 21px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .main-content {
+        padding: 25px 20px;
+    }
+
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .progress-tabs {
+        overflow-x: auto;
+    }
+
+    .progress-tab {
+        white-space: nowrap;
+    }
+
+    .subject-item {
+        flex-wrap: wrap;
+    }
+
+    .subject-progress {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .main-content {
+        padding: 20px 15px;
+    }
+
+    .page-header h1 {
+        font-size: 27px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-box {
+        min-height: 85px;
+    }
+
+    .progress-card {
+        padding: 16px;
+    }
+
+    .weekly-chart {
+        height: 120px;
+    }
+
+    .weekly-chart .chart-bar {
+        width: 22px;
+    }
+}
+/* ============================================
+   ESTILOS ADICIONAIS - LUMOS CONNECT v2
+   ============================================ */
+
+.page-header { margin-bottom: 24px; }
+.page-header h1 { font-size: 1.5rem; font-weight: 800; color: var(--text, #2B3B36); }
+.page-header p { color: var(--text-secondary); margin-top: 4px; font-size: .9rem; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+.stat-card { background: var(--surface,#fff); border-radius: 14px; padding: 18px; border: 1px solid var(--border,#D3D9CC); display: flex; align-items: center; gap: 14px; }
+.stat-card svg { width: 28px; height: 28px; color: var(--primary,#4E6F5A); flex-shrink: 0; }
+.stat-value { display: block; font-size: 1.7rem; font-weight: 800; color: var(--text,#2B3B36); line-height: 1; }
+.stat-label { display: block; font-size: .78rem; color: var(--text-secondary); margin-top: 4px; }
+
+.progress-section { background: var(--surface,#fff); border-radius: 14px; padding: 20px 24px; border: 1px solid var(--border,#D3D9CC); margin-bottom: 20px; }
+.progress-section h2 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; color: var(--text,#2B3B36); }
+
+.progress-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--background,#F5F3EC); border-radius: 9px; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.progress-item-info { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; flex: 1; }
+.progress-item-badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: .72rem; font-weight: 700; background: var(--secondary,#DCE7DA); color: var(--primary,#4E6F5A); }
+.progress-item-title { font-size: .9rem; font-weight: 600; color: var(--text,#2B3B36); }
+.progress-item-subject { font-size: .8rem; color: var(--text-secondary); }
+.status-done { color: #166534; font-size: .85rem; font-weight: 600; }
+.status-pending { color: var(--text-secondary); font-size: .85rem; }
+
+.subject-progress { display: flex; flex-direction: column; gap: 14px; }
+.subject-bar-header { display: flex; justify-content: space-between; font-size: .9rem; font-weight: 600; margin-bottom: 6px; color: var(--text,#2B3B36); }
+
+.progress-bar { height: 10px; background: var(--soft,#E6E8E0); border-radius: 10px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--primary,#4E6F5A); border-radius: 10px; transition: width .5s; }
+
+@media(max-width:768px){ .stats-grid{ grid-template-columns: 1fr 1fr; } }
+@media(max-width:480px){ .stats-grid{ grid-template-columns: 1fr; } }
